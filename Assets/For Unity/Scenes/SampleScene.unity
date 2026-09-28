@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &156289547 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6650982105712414412, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
-  m_PrefabInstance: {fileID: 292255002}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &292255002
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,8 +412,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 291c96c97aa58004887b72549687b632, type: 2}
     - target: {fileID: 6292205078739038907, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
+      propertyPath: m_Size.y
+      value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292205078739038907, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
+      propertyPath: m_Size.z
+      value: 2.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292205078739038907, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
       propertyPath: m_Center.x
-      value: -0.48
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292205078739038907, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
+      propertyPath: m_Center.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6292205078739038907, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
+      propertyPath: m_Center.z
+      value: -0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6292205078739038910, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -586,9 +597,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1642713020432908313, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 730363480}
-    - targetCorrespondingSourceObject: {fileID: 6650982105712414412, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 832832723}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3208419385314687408, guid: 8fd283e905a07574f9e0899abb6e92f4, type: 3}
       insertIndex: -1
@@ -785,7 +793,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5df2e22131f3027418c010b7d0ca79d8, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1194,7 +1202,7 @@ PrefabInstance:
       addedObject: {fileID: 768397339}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 9d96fe4fcd35cd94bb044fc76f910622, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 768397340}
+      addedObject: {fileID: 768397342}
   m_SourcePrefab: {fileID: 100100000, guid: 9d96fe4fcd35cd94bb044fc76f910622, type: 3}
 --- !u!1 &496063675
 GameObject:
@@ -1472,7 +1480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0c9ec2b1e2eccf49aff02ca49efe889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrookAnimation
---- !u!114 &768397340
+--- !u!114 &768397342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1481,76 +1489,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 768397329}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 944f1f050ea5f784e84002058cf705f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 8561e3ee66dd53f46949cd08676a4df3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorOpener
---- !u!1 &832832722
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 832832723}
-  - component: {fileID: 832832725}
-  - component: {fileID: 832832724}
-  m_Layer: 0
-  m_Name: TriggerDoor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &832832723
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832832722}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0.00048845337, y: 0.0025899706, z: -0.00002398231, w: 0.99999654}
-  m_LocalPosition: {x: -0.57899284, y: -0, z: 0.13795143}
-  m_LocalScale: {x: 2.637407, y: 1, z: 3.3735125}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 156289547}
-  m_LocalEulerAnglesHint: {x: 0, y: -4.703, z: 0}
---- !u!65 &832832724
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832832722}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.24, y: 0, z: 0}
---- !u!114 &832832725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832832722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7890496ca6e494dac0bcf66cad7f1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorOpenTrigger
-  _door: {fileID: 1378534255}
+  m_EditorClassIdentifier: Assembly-CSharp::InputReader
 --- !u!4 &843535080 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -598141206938082396, guid: 9d96fe4fcd35cd94bb044fc76f910622, type: 3}
@@ -1761,7 +1702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc05eb2178550314987b725832ffaedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Door
-  _animator: {fileID: 1378534256}
 --- !u!95 &1378534256
 Animator:
   serializedVersion: 7

@@ -21,7 +21,7 @@ public class AlarmSystemTrigger : MonoBehaviour
             _targetsInside++;
 
             if (_targetsInside == firstCrook)
-                _alarmSystem.TrunOn();
+                _alarmSystem.TurnOn();
         }
     }
 
@@ -32,7 +32,7 @@ public class AlarmSystemTrigger : MonoBehaviour
             _targetsInside--;
 
             if (_targetsInside <= 0)
-                _alarmSystem.TrunOff();
+                _alarmSystem.TurnOff();
         }
     }
 }

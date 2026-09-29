@@ -3,17 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(Mover))]
 [RequireComponent(typeof(CrookAnimation))]
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(FootstepsAudio))]
 public class Crook : MonoBehaviour
 {
+    [SerializeField] private Camera _camera;
+
+    private FootstepsAudio _audioSteps;
     private InputReader _inputReader;
     private Mover _mover;
     private CrookAnimation _crookAnimation;
 
-    private IInteractable _currentInteractable;
-
     private void Awake()
     {
+        _audioSteps = GetComponent<FootstepsAudio>();
         _inputReader = GetComponent<InputReader>();
         _mover = GetComponent<Mover>();
         _crookAnimation = GetComponent<CrookAnimation>();
@@ -24,23 +26,17 @@ public class Crook : MonoBehaviour
         _inputReader.Interacted += OnInteract;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        _mover.Rotate();
-        _mover.Move();
+        float distance = _mover.Move();
+
+        _audioSteps.CreateAudioSteps(distance);
         _crookAnimation.SetSpeed(_mover.CurrentSpeed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        if (other.TryGetComponent(out IInteractable interacteble))
-            _currentInteractable = interacteble;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.TryGetComponent(out IInteractable interacteble) && interacteble == _currentInteractable)
-            _currentInteractable = null;
+        _mover.Rotate();
     }
 
     private void OnDisable()
@@ -50,9 +46,12 @@ public class Crook : MonoBehaviour
 
     private void OnInteract()
     {
-        if (_currentInteractable == null)
-            return;
+        float maxDistance = 3f;
 
-        _currentInteractable.Interact();
+        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+            if (hit.collider.TryGetComponent(out IInteractable interactable))
+                interactable.Interact();
     }
 }

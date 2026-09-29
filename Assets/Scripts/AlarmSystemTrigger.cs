@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class AlarmSystemTrigger : MonoBehaviour
 {
-    [SerializeField] private AlarmSystem _alarmSystem;
+    public event Action TriggerEntered;
+    public event Action TriggerExited;
 
     private int _targetsInside;
 
@@ -21,7 +23,7 @@ public class AlarmSystemTrigger : MonoBehaviour
             _targetsInside++;
 
             if (_targetsInside == firstCrook)
-                _alarmSystem.TurnOn();
+                TriggerEntered?.Invoke();
         }
     }
 
@@ -32,7 +34,7 @@ public class AlarmSystemTrigger : MonoBehaviour
             _targetsInside--;
 
             if (_targetsInside <= 0)
-                _alarmSystem.TurnOff();
+                TriggerExited?.Invoke();
         }
     }
 }

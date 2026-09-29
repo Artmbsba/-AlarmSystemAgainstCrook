@@ -1,14 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(InputReader))]
+[RequireComponent(typeof(Rigidbody))]
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private AudioSource _stepsAudioSource;
     [SerializeField] private float _rotateSpeed = 100f;
     [SerializeField] private float _moveSpeed = 2f;
-    [SerializeField] private float _stepDistance = 1f;
-    [SerializeField] private float _coveredDestance;
 
+    private Rigidbody _rigidbody;
     private InputReader _inputReader;
     private Vector2 _moveInput;
 
@@ -16,6 +15,11 @@ public class Mover : MonoBehaviour
 
     private void Awake()
     {
+        _rigidbody = GetComponent<Rigidbody>();
+        _rigidbody.isKinematic = false;
+        _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
+        _rigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+
         _inputReader = GetComponent<InputReader>();
     }
 
@@ -36,32 +40,24 @@ public class Mover : MonoBehaviour
         transform.Rotate(rotation * _rotateSpeed * Time.deltaTime * Vector3.up);
     }
 
-    public void Move()
+    public float Move()
     {
         float direction = _moveInput.y;
 
-        float distance = direction * _moveSpeed * Time.deltaTime;
+        Vector3 forward = transform.forward;
+        forward.y = 0f;
 
-        transform.Translate(distance * Vector3.forward);
+        Vector3 targetVelocity = forward * (direction * _moveSpeed);
+
+        _rigidbody.linearVelocity = new Vector3(targetVelocity.x, _rigidbody.linearVelocity.y, targetVelocity.z);
 
         CurrentSpeed = Mathf.Abs(direction) * _moveSpeed;
 
-        CreateAudioSteps(distance);
+        return direction * _moveSpeed * Time.fixedDeltaTime;
     }
 
     private void OnMoveInputChanged(Vector2 input)
     {
         _moveInput = input;
-    }
-
-    private void CreateAudioSteps(float distance)
-    {
-        _coveredDestance += Mathf.Abs(distance);
-
-        if (_coveredDestance >= _stepDistance)
-        {
-            _coveredDestance -= _stepDistance;
-            _stepsAudioSource.Play();
-        }
     }
 }
